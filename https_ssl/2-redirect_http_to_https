@@ -27,7 +27,7 @@ defaults
 
 frontend www-http
 	bind *:80
-	http-request redirect scheme https code 301
+	http-request redirect scheme https code 301 if !{ ssl_fc }
 
 frontend www-https
 	bind *:443 ssl crt /etc/haproxy/certs/www.davine.tech.pem
