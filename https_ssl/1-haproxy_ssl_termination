@@ -33,7 +33,8 @@ frontend www-https
 	bind *:443 ssl crt /etc/haproxy/certs/www.davine.tech.pem
 	default_backend web-backend
 
-backend web_backends
+backend web-backend
     balance roundrobin
+    option httpchk GET / HTTP/1.1\r\nHost:\ www.davine.tech
     server web-01 100.24.45.229:80 check
     server web-02 32.192.229.194:80 check
